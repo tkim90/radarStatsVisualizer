@@ -1,7 +1,16 @@
 import React from 'react';
-import chartjs from 'chart.js';
+import myChart from 'chart.js';
+import styled from 'styled-components';
 
 const color = 'rgba(33, 200, 81, 0.2)';
+
+const ChartWrapper = styled.div`
+  height: 300px;
+  width: 300px;
+  border: 1px solid blue;
+  text-align: right;
+`;
+  // float: left;
 
 class Chart extends React.Component {
   constructor(props) {
@@ -34,7 +43,7 @@ class Chart extends React.Component {
 
   componentDidMount() {
     var ctx = document.getElementById('myChart').getContext('2d');
-    var myRadarChart = new Chart(ctx, {
+    var myRadarChart = new myChart(ctx, {
       type: 'radar',
       data: this.state.data,
       options: this.state.options
@@ -42,7 +51,11 @@ class Chart extends React.Component {
   }
 
   render() {
-    return <canvas height="70vh" id="myChart" />
+    return (
+      <ChartWrapper>
+        <canvas width="100vw" height="100vh" id="myChart" />
+      </ChartWrapper>
+    );
   }
 };
 
